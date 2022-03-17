@@ -1,13 +1,15 @@
 <?php
 
-class ListModel {
+class ListModel
+{
 
-    public static function getList() {
+    public static function getList()
+    {
         $db = Db::getConnection();
         $result = $db->query('SELECT * FROM list');
         $listArray = array();
         $i = 0;
-        while ($row = $result->fetch()) {
+        while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
             $listArray[$i]['id'] = $row['id'];
             $listArray[$i]['name'] = $row['name'];
             $listArray[$i]['description'] = $row['description'];
